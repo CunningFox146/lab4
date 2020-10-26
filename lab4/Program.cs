@@ -41,6 +41,21 @@ namespace lab4
             return new_set;
         }
 
+        public static Set operator *(Set a, Set b)
+        {
+            Set new_set = (Set)a.MemberwiseClone();
+
+            foreach(string item in new_set.mData)
+            {
+                if (!b.mData.Contains(item))
+                {
+                    new_set.mData.Remove(item);
+                }
+            }
+
+            return new_set;
+        }
+
         public override string ToString()
         {
             StringBuilder str = new StringBuilder();
@@ -57,8 +72,10 @@ namespace lab4
         static void Main(string[] args)
         {
             var Set1 = new Set(new string[] { "1", "2", "a" });
+            var Set2 = new Set(new string[] { "1", "2", "3" });
 
             Console.WriteLine(Set1 - "a");
+            Console.WriteLine(Set1 * Set2);
         }
     }
 }
