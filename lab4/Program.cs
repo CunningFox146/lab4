@@ -90,6 +90,11 @@ namespace lab4
             return true;
         }
 
+        public static bool operator &(Set a, Set b)
+        {
+            return a.mData[0] == b.mData[0];
+        }
+
         public override string ToString()
         {
             StringBuilder str = new StringBuilder();
@@ -112,6 +117,7 @@ namespace lab4
             Console.WriteLine(Set1 * Set2);
             Console.WriteLine(Set1 < Set2);
             Console.WriteLine(Set1 > Set2);
+            Console.WriteLine(Set1 & Set2);
         }
     }
 }
