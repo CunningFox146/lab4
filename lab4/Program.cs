@@ -80,7 +80,13 @@ namespace lab4
 
         public static bool operator >(Set a, Set b)
         {
-            
+            foreach(string item in a.mData)
+            {
+                if (!b.mData.Contains(item))
+                {
+                    return false;
+                }
+            }
             return true;
         }
 
@@ -105,6 +111,7 @@ namespace lab4
             Console.WriteLine(Set1 - "a");
             Console.WriteLine(Set1 * Set2);
             Console.WriteLine(Set1 < Set2);
+            Console.WriteLine(Set1 > Set2);
         }
     }
 }
