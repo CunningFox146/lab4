@@ -20,6 +20,23 @@ namespace lab4
             mData = new List<string>(items);
         }
 
+        public uint GetPower()
+        {
+            uint i = 0;
+            var dict = new Dictionary<string, int>();
+            foreach (string item in mData)
+            {
+                if (!dict.ContainsKey(item))
+                {
+                    dict[item] = 0;
+                }
+                dict[item]++;
+                if (dict[item] == 1) { i++; };
+
+            }
+            return i;
+        }
+
         public string this[int i]
         {
             get
@@ -56,6 +73,17 @@ namespace lab4
             return new_set;
         }
 
+        public static bool operator <(Set a, Set b)
+        {
+            return a.GetPower() < b.GetPower();
+        }
+
+        public static bool operator >(Set a, Set b)
+        {
+            
+            return true;
+        }
+
         public override string ToString()
         {
             StringBuilder str = new StringBuilder();
@@ -76,6 +104,7 @@ namespace lab4
 
             Console.WriteLine(Set1 - "a");
             Console.WriteLine(Set1 * Set2);
+            Console.WriteLine(Set1 < Set2);
         }
     }
 }
